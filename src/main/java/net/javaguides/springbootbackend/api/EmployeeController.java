@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/employees")
+@CrossOrigin(origins = {"${settings.cors_origin}"})
 public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
