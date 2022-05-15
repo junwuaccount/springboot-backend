@@ -24,6 +24,9 @@ public class Employee {
     @Column(name = "last_name")
     private String lastname;
 
-    @Column(name = "email_id")
+    @Column(name = "email_id",nullable = true)
     private String emailid;
+
+    @Column(name = "department_id",nullable = true)
+    private Long departmentid;
 }

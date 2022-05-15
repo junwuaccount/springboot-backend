@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/employees")
+@CrossOrigin(origins = {"${settings.cors_origin}"})
 public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -21,6 +22,7 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
+    //get employee by id endpoint
     @GetMapping("{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable long id) {
         Employee employee = employeeRepository.findById(id).orElseThrow(() ->
@@ -44,7 +46,7 @@ public class EmployeeController {
         employeeRepository.save(updateEmployee);
 
         return ResponseEntity.ok(updateEmployee);
-    };
+    }
 
     @DeleteMapping("{id}")
     public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable long id){
